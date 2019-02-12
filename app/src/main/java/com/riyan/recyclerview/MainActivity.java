@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,12 +27,16 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup rGroup;
     RadioButton rbIk, rbSi, rbTi;
 
+    ArrayList<Siswa> siswaArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        siswaArrayList = new ArrayList<>();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -48,15 +55,31 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.setTitle("Biodata");
 
                 //definisi objek
-                editNama = (EditText) findViewById(R.id.edNama);
+                editNama = (EditText) view.findViewById(R.id.edNama);
 
                 //berikan id pada radio group dahulu pada MainActivity.xml
-                rGroup = (RadioGroup) findViewById(R.id.r_Group);
+                rGroup = (RadioGroup) view.findViewById(R.id.r_Group);
+
+
+                rbIk = (RadioButton) view.findViewById(R.id.rb_ik);
+                rbTi = (RadioButton) view.findViewById(R.id.rb_ti);
+                rbSi = (RadioButton) view.findViewById(R.id.rb_si);
 
                 alertDialog.setPositiveButton("SIMPAN", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //Simpan kedalam pojo
+                        siswaArrayList.add((
+                                new Siswa(editNama.getText().toString(),
+                                        rbIk.isChecked(),
+                                        rbTi.isChecked(),
+                                        rbSi.isChecked()
+                                        )
+                        ));
 
+                        Toast.makeText(getApplicationContext(),
+                                "Data tersimpan",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
