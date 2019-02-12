@@ -98,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
                         //sementara aja
                         for (int i = 0; i < siswaArrayList.size(); i++) {
                             Log.d("Tes Nama", siswaArrayList.get(i).getNama());
-                            Log.d("Tes IK", siswaArrayList.get(i).getNama());
-                            Log.d("Tes TI", siswaArrayList.get(i).getNama());
-                            Log.d("Tes SI", siswaArrayList.get(i).getNama());
+                            Log.d("Tes IK", siswaArrayList.get(i).getIK().toString());
+                            Log.d("Tes TI", siswaArrayList.get(i).getTI().toString());
+                            Log.d("Tes SI", siswaArrayList.get(i).getSI().toString());
 
                         }
 
