@@ -1,12 +1,16 @@
 package com.riyan.recyclerview;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -77,9 +81,32 @@ public class MainActivity extends AppCompatActivity {
                                         )
                         ));
 
-                        Toast.makeText(getApplicationContext(),
-                                "Data tersimpan",
-                                Toast.LENGTH_SHORT).show();
+                        //notifikasi
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(getBaseContext(), "MY_CHANNAL")
+                                .setSmallIcon(R.mipmap.formulir)
+                                .setContentTitle("Perhatian")
+                                .setContentText(editNama.getText().toString() + "tersimpan")
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                .setDefaults(Notification.DEFAULT_SOUND)
+                                .setVibrate(new long[] {1000, 1000, 1000, 1000, 1000});
+
+                        //munculkan notifikasi
+                        NotificationManager manager = (NotificationManager) getSystemService(
+                                getBaseContext().NOTIFICATION_SERVICE);
+                        manager.notify(1, builder.build()); //angka 1 bebas
+
+                        //sementara aja
+                        for (int i = 0; i < siswaArrayList.size(); i++) {
+                            Log.d("Tes Nama", siswaArrayList.get(i).getNama());
+                            Log.d("Tes IK", siswaArrayList.get(i).getNama());
+                            Log.d("Tes TI", siswaArrayList.get(i).getNama());
+                            Log.d("Tes SI", siswaArrayList.get(i).getNama());
+
+                        }
+
+                        //Toast.makeText(getApplicationContext(),
+                                //"Data tersimpan",
+                                //Toast.LENGTH_SHORT).show();
                     }
                 });
 
