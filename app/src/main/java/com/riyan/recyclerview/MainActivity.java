@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        tvNama = (TextView) findViewById(R.id.tv_nama);
-        tvKelas = (TextView) findViewById(R.id.tv_kelas);
+        //tvNama = (TextView) findViewById(R.id.tv_nama);
+        //tvKelas = (TextView) findViewById(R.id.tv_kelas);
 
         siswaArrayList = new ArrayList<>();
 
