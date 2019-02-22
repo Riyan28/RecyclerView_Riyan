@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editNama;
     RadioGroup rGroup;
     RadioButton rbIk, rbSi, rbTi;
+    TextView tvNama, tvKelas;
 
     ArrayList<Siswa> siswaArrayList;
 
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        tvNama = (TextView) findViewById(R.id.tv_nama);
+        tvKelas = (TextView) findViewById(R.id.tv_kelas);
 
         siswaArrayList = new ArrayList<>();
 
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                                         )
                         ));
 
+/*
                         //notifikasi
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(getBaseContext(), "MY_CHANNAL")
                                 .setSmallIcon(R.mipmap.formulir)
@@ -94,15 +100,30 @@ public class MainActivity extends AppCompatActivity {
                         NotificationManager manager = (NotificationManager) getSystemService(
                                 getBaseContext().NOTIFICATION_SERVICE);
                         manager.notify(1, builder.build()); //angka 1 bebas
+*/
+
+
+/*
+                        //-------------------------YANG BARU
+                        tvNama.setText((editNama.getText().toString()));
+
+                        //untuk kelas, karena radiobutton kita hanya ambil yg dipilih saja
+                        int selectedIndex = rGroup.getCheckedRadioButtonId();
+                        final RadioButton radioButton = (RadioButton) diagView.findViewById(selectedIndex);
+                        tvKelas.setText(radioButton.getText().toString());
+
+                        //--------------------------------
+*/
+
 
                         //sementara aja
-                        for (int i = 0; i < siswaArrayList.size(); i++) {
-                            Log.d("Tes Nama", siswaArrayList.get(i).getNama());
-                            Log.d("Tes IK", siswaArrayList.get(i).getIK().toString());
-                            Log.d("Tes TI", siswaArrayList.get(i).getTI().toString());
-                            Log.d("Tes SI", siswaArrayList.get(i).getSI().toString());
+                        //for (int i = 0; i < siswaArrayList.size(); i++) {
+                            //Log.d("Tes Nama", siswaArrayList.get(i).getNama());
+                            //Log.d("Tes IK", siswaArrayList.get(i).getIK().toString());
+                            //Log.d("Tes TI", siswaArrayList.get(i).getTI().toString());
+                            //Log.d("Tes SI", siswaArrayList.get(i).getSI().toString());
 
-                        }
+                        //}
 
                         //Toast.makeText(getApplicationContext(),
                                 //"Data tersimpan",
